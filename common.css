@@ -2,3 +2,37 @@
     margin-top: 24px;
     font-size: 32px;
 }
+
+.remark-slide-content .center {
+    display: flex;
+    justify-content: center;
+}
+
+.inverse {
+    background: #272822;
+    color: #f3f3f3;
+    text-shadow: 0 0 20px #333;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px 24px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 24px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.l-space {
+    margin-top: 64px;
+}
+
+.xl-space {
+    margin-top: 128px;
+}
