@@ -1,4 +1,4 @@
-package dev.shivamnagpal.vertxspringdi;
+package dev.shivamnagpal.vertxspringboot;
 
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.vertx.core.http.HttpServerResponse;

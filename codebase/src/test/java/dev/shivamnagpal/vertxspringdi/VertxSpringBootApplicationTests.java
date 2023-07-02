@@ -2,7 +2,7 @@ package dev.shivamnagpal.vertxspringdi;
 
 import org.junit.jupiter.api.Test;
 
-class VertxSpringDiApplicationTests {
+class VertxSpringBootApplicationTests {
 
     @Test
     void contextLoads() {
