@@ -5,6 +5,8 @@ import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import org.springframework.stereotype.Controller;
 
+import java.util.UUID;
+
 @Controller
 public class HelloController {
     private final Router router;
@@ -20,6 +22,16 @@ public class HelloController {
             HttpServerResponse response = routingContext.response();
             response.setStatusCode(HttpResponseStatus.OK.code())
                     .end("Hello from Vert.x");
+        });
+
+        this.router.get("/hello-dynamic").handler(routingContext -> {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < 10; i++) {
+                stringBuilder.append(UUID.randomUUID());
+            }
+            HttpServerResponse response = routingContext.response();
+            response.setStatusCode(HttpResponseStatus.OK.code())
+                    .end(stringBuilder.toString());
         });
     }
 }
