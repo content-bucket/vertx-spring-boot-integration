@@ -2,3 +2,19 @@
     display: inline-block;
     width: 50%;
 }
+
+.load-test img {
+    width: 90%;
+}
+
+.rps-comparison h3 {
+    margin: 0;
+}
+
+.rps-comparison h5 {
+    margin: 0;
+}
+
+.rps-comparison p {
+    margin: 0;
+}

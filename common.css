@@ -29,6 +29,14 @@ th, td {
     font-weight: bold;
 }
 
+.s-space {
+    margin-top: 16px;
+}
+
+.m-space {
+    margin-top: 32px;
+}
+
 .l-space {
     margin-top: 64px;
 }
