@@ -6,14 +6,14 @@ name: title
 
 ---
 
-# Brief Intro about Eclipse Vert.x
+## Brief Intro about Eclipse Vert.x
 * Eclipse Vert.x is a tool-kit for building reactive applications on the JVM.
 * Being a toolkit (not a framework), it is naturally very composable and embeddable.
 * Doesn't have a strong opinion for the application structure.
 
 ---
 
-# Why Integrate Vert.x with Spring Boot
+## Why Integrate Vert.x with Spring Boot
 * Dependency Injection support.
 * Easier Configurations management.
 * Best of both worlds
@@ -33,7 +33,7 @@ class: center, middle, inverse
 
 ---
 
-# Metrics Comparison
+## Metrics Comparison
 .xl-space[
 ### .center[Startup Time]
 ]
@@ -45,7 +45,7 @@ class: center, middle, inverse
 
 ---
 
-# Metrics Comparison
+## Metrics Comparison
 .xl-space[
 ### .center[Fat Jar Size]
 ]
@@ -58,7 +58,7 @@ class: center, middle, inverse
 ---
 
 class: rps-comparison
-# Metrics Comparison
+## Metrics Comparison
 .s-space[
 ### .center[RPS (Static Response)]
 ]
@@ -81,7 +81,7 @@ class: rps-comparison
 ---
 
 class: rps-comparison
-# Metrics Comparison
+## Metrics Comparison
 .s-space[
 ### .center[RPS (Dynamic Response)]
 ]
