@@ -7,6 +7,10 @@
     width: 90%;
 }
 
+.rps-comparison h2 {
+    margin-bottom: 0;
+}
+
 .rps-comparison h3 {
     margin: 0;
 }
