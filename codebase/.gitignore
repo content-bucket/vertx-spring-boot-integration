@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+loadtest/__pycache__
