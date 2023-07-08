@@ -1,3 +1,8 @@
+.remark-slide {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2e2e2e;
+}
+
 .remark-slide li {
     margin-top: 24px;
     font-size: 32px;
@@ -10,7 +15,7 @@
 
 .inverse {
     background: #272822;
-    color: #f3f3f3;
+    color: #e5e5e5;
     text-shadow: 0 0 20px #333;
 }
 
@@ -43,4 +48,9 @@ th, td {
 
 .xl-space {
     margin-top: 128px;
+}
+
+.right-column {
+    float: right;
+    width: 50%;
 }
