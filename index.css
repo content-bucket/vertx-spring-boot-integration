@@ -22,3 +22,19 @@
 .rps-comparison p {
     margin: 0;
 }
+
+#implementation-details ~ p {
+    margin: 0;
+}
+
+#implementation-details ~ ul {
+    margin: 0;
+}
+
+#implementation-details ~ ul p {
+    margin: 0;
+}
+
+.vertx-implementation img {
+    width: 50%;
+}
