@@ -84,8 +84,23 @@ class: center, middle, inverse
 ]
 .center[
 | | Vert.x | Vert.x with Spring |
-|---------------------|---------|---------------------|
+|-|--------|--------------------|
 | .bold[Time (in ms)] | 189 | 266 |
+]
+
+---
+
+## Metrics Comparison
+
+.xl-space[
+
+### .center[Ideal RAM Usage]
+
+]
+.center[
+| | Vert.x | Vert.x with Spring |
+|-|--------|--------------------|
+| .bold[Size (in MB)] | 63.52 | 205.1 |
 ]
 
 ---
@@ -99,7 +114,7 @@ class: center, middle, inverse
 ]
 .center[
 | | Vert.x | Vert.x with Spring |
-|---------------------|---------|----------------------|
+|-|--------|--------------------|
 | .bold[Size (in MB)] | 6.6 | 16.2 |
 ]
 
@@ -116,7 +131,7 @@ class: rps-comparison
 ]
 .s-space.center[
 | | Vert.x | Vert.x with Spring |
-|------------------------|---------|--------------------|
+|-|--------|--------------------|
 | .bold[RPS 20000 Users] | 39935.6 | 39912.7 |
 ]
 
@@ -146,7 +161,7 @@ class: rps-comparison
 ]
 .s-space.center[
 | | Vert.x | Vert.x with Spring |
-|------------------------|---------|--------------------|
+|-|--------|--------------------|
 | .bold[RPS 20000 Users] | 39947.2 | 39916.9 |
 ]
 
