@@ -94,7 +94,7 @@ class: center, middle, inverse
 
 .xl-space[
 
-### .center[Ideal RAM Usage]
+### .center[Idle RAM Usage]
 
 ]
 .center[
