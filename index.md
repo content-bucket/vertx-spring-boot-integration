@@ -11,15 +11,15 @@ name: title
 
 --
 
-* Eclipse Vert.x is a tool-kit for building reactive applications on the JVM.
+* Tool-kit to build reactive applications on the JVM.
 
 --
 
-* Being a toolkit (not a framework), it is naturally very composable and embeddable.
+* Naturally very composable and embeddable.
 
 --
 
-* Doesn't have a strong opinion about the application structure.
+* No strong opinions about the application structure.
 
 ---
 
@@ -37,7 +37,7 @@ name: title
 
 * Best of both worlds
     * Spring provides unique features to maintain large projects with ease.
-    * Eclipse Vert.x provides solid performance to build reactive web applications.
+    * Vert.x provides solid performance to build reactive web applications.
 
 ---
 
