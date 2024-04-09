@@ -29,11 +29,12 @@ public class VertxRunner implements CommandLineRunner {
         vertx.deployVerticle(mainVerticle)
                 .onSuccess(depId -> logger.log(Level.INFO, "Successfully deployed the Vert.x Verticle"))
                 .onFailure(throwable -> {
-                    logger.log(Level.SEVERE, "Failed to deploy the Vert.x Verticle: {0}", throwable);
+                    logger.log(Level.SEVERE, "Failed to deploy the Vert.x Verticle", throwable);
                     System.exit(-1);
                 });
     }
 
+    @SuppressWarnings("java:S106")
     @PreDestroy
     public void destroy() {
         // Intentionally used System.out.println instead of Logger. By default, Logger registers its own Shutdown hook.
@@ -54,10 +55,12 @@ public class VertxRunner implements CommandLineRunner {
             countDownLatch.countDown();
         });
         try {
-            //noinspection ResultOfMethodCallIgnored
-            countDownLatch.await(30, TimeUnit.SECONDS);
+            boolean isVertxDown = countDownLatch.await(30, TimeUnit.SECONDS);
+            if (!isVertxDown) {
+                System.out.println("Couldn't exit the Vert.x gracefully");
+            }
         } catch (InterruptedException ignored) {
-
+            Thread.currentThread().interrupt();
         } finally {
             System.out.println("Exiting the application");
         }
