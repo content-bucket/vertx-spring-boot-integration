@@ -2,15 +2,16 @@ package dev.shivamnagpal.vertxspringboot;
 
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
-import io.vertx.ext.web.Router;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,22 +19,34 @@ import java.util.logging.Logger;
 public class VertxRunner implements CommandLineRunner {
 
     private static final Logger logger = Logger.getLogger(VertxRunner.class.getName());
+
     private final Vertx vertx;
 
-    private final Router router;
+    private final List<MainVerticle> mainVerticleList;
 
-    private final Integer serverPort;
+    private final Integer vertxInstanceCount;
 
     @Autowired
-    public VertxRunner(Vertx vertx, Router router, @Value("${vertx.server.port}") Integer serverPort) {
+    public VertxRunner(
+            Vertx vertx,
+            List<MainVerticle> mainVerticleList,
+            @Value("${vertx.instance.count}") Integer vertxInstanceCount
+    ) {
         this.vertx = vertx;
-        this.router = router;
-        this.serverPort = serverPort;
+        this.mainVerticleList = mainVerticleList;
+        this.vertxInstanceCount = vertxInstanceCount;
     }
 
     @Override
     public void run(String... args) {
-        vertx.deployVerticle(() -> new MainVerticle(router, serverPort), new DeploymentOptions().setInstances(10))
+        AtomicInteger atomicInteger = new AtomicInteger(0);
+        vertx.deployVerticle(() -> {
+                    int index = atomicInteger.getAndIncrement();
+                    if (index >= vertxInstanceCount) {
+                        throw new IllegalStateException("Main Verticle index out of bounds");
+                    }
+                    return mainVerticleList.get(index);
+                }, new DeploymentOptions().setInstances(10))
                 .onSuccess(depId -> logger.log(Level.INFO, "Successfully deployed the Vert.x Verticle"))
                 .onFailure(throwable -> {
                     logger.log(Level.SEVERE, "Failed to deploy the Vert.x Verticle", throwable);
