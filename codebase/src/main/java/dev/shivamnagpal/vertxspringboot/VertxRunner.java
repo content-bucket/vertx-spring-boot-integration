@@ -1,8 +1,11 @@
 package dev.shivamnagpal.vertxspringboot;
 
+import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
+import io.vertx.ext.web.Router;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,17 +19,21 @@ public class VertxRunner implements CommandLineRunner {
 
     private static final Logger logger = Logger.getLogger(VertxRunner.class.getName());
     private final Vertx vertx;
-    private final MainVerticle mainVerticle;
+
+    private final Router router;
+
+    private final Integer serverPort;
 
     @Autowired
-    public VertxRunner(Vertx vertx, MainVerticle mainVerticle) {
+    public VertxRunner(Vertx vertx, Router router, @Value("${vertx.server.port}") Integer serverPort) {
         this.vertx = vertx;
-        this.mainVerticle = mainVerticle;
+        this.router = router;
+        this.serverPort = serverPort;
     }
 
     @Override
     public void run(String... args) {
-        vertx.deployVerticle(mainVerticle)
+        vertx.deployVerticle(() -> new MainVerticle(router, serverPort), new DeploymentOptions().setInstances(10))
                 .onSuccess(depId -> logger.log(Level.INFO, "Successfully deployed the Vert.x Verticle"))
                 .onFailure(throwable -> {
                     logger.log(Level.SEVERE, "Failed to deploy the Vert.x Verticle", throwable);
